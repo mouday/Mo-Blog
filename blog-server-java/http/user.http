@@ -1,0 +1,13 @@
+
+GET {{baseUrl}}/api/users?page=1
+
+###
+GET {{baseUrl}}/user?id=1
+
+###
+GET {{baseUrl}}/blog?id=1
+
+###
+
+GET {{baseUrl}}/api/blogs?userId=1
+###

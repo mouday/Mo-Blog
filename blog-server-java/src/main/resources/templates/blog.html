@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>古诗文网-[[${blog.title}]]</title>
+    <link rel="stylesheet" href="/static/reset.css"/>
+    <link rel="stylesheet" href="/static/main.css"/>
+</head>
+
+<body>
+<div>
+    <div th:replace="index::header"></div>
+
+    <div class="main">
+        <div class="box">
+            <div class="box-title">
+                <h2 th:text="${blog.title}">驾去温泉后赠杨山人</h2>
+                <a th:href="'/user/'+${blog.user.id}" th:text="${blog.user.name}">李白</a>
+                <span class="info" th:text="'['+${blog.user.dynasty}+']'">[唐朝]</span>
+            </div>
+
+            <div class="box-content">
+                <div th:utext="${blog.content}"></div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="index::footer"></div>
+</div>
+</body>
+</html>
