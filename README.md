@@ -4,4 +4,4 @@
 
 项目 | 说明 | README
 -|- |- 
-blog-www | MoBlog前端www项目 | (README)[blog-www/README.md]
+blog-www | MoBlog前端www项目 | [README](blog-www/README.md)
