@@ -15,9 +15,6 @@ public class Blog {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
-    // @Column(name = "user_id", insertable = false, updatable = false)
-    // private Integer userId;
-
     // No serializer found for class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor
     // and no properties discovered to create BeanSerializer
     @JsonIgnoreProperties(value = { "hibernateLazyInitializer"})

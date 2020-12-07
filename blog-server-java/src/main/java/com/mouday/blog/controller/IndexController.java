@@ -1,9 +1,7 @@
 package com.mouday.blog.controller;
 
-import com.mouday.blog.dao.BlogDao;
 import com.mouday.blog.domain.Blog;
 import com.mouday.blog.domain.User;
-import com.mouday.blog.repository.BlogRepository;
 import com.mouday.blog.service.BlogService;
 import com.mouday.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 页面控制器
+ */
 @Controller
 public class IndexController {
     @Autowired
@@ -26,9 +27,13 @@ public class IndexController {
     @Autowired
     BlogService blogService;
 
-    @Autowired
-    BlogDao blogDao;
-
+    /**
+     * 首页
+     * @param page
+     * @param size
+     * @param model
+     * @return
+     */
     @GetMapping("/")
     public String index(@RequestParam(defaultValue = "1") Integer page,
                           @RequestParam(defaultValue = "20") Integer size,
@@ -42,41 +47,56 @@ public class IndexController {
         return "index";
     }
 
+
+    /**
+     * 用户主页
+     * @param userId
+     * @param model
+     * @return
+     */
     @GetMapping("/user/{userId}")
     public String getUser(@PathVariable Integer userId, Model model){
         User user = userService.getUser(userId);
         Page<Blog> blogs = blogService.getBlogs(1, 10, userId);
 
         model.addAttribute("user", user);
+
         model.addAttribute("list", blogs.getContent());
         model.addAttribute("total", blogs.getTotalElements());
 
         return "user";
     }
 
+    /**
+     * 获取用户列表
+     * @param page
+     * @param size
+     * @return
+     */
     @GetMapping("/users")
     public String getUsers(@RequestParam(defaultValue = "1") Integer page,
                            @RequestParam(defaultValue = "20") Integer size,
                            Model model){
-        // Page<User> users = userService.getUsers(page, size, true);
 
-        List<Map<String, Object>> list = blogDao.getBlogByGroupUser(page, size);
-
-        System.out.println(list);
+        List<Map<String, Object>> list = blogService.getBlogByGroupUser(page, size);
 
         model.addAttribute("list", list);
-        // model.addAttribute("total", users.getTotalElements());
 
         return "users";
     }
 
+    /**
+     * 通过id 获取博客详情
+     * @param blogId
+     * @return
+     */
     @GetMapping("/blog/{blogId}")
     public String getBlog(@PathVariable Integer blogId,
                            Model model) {
 
         Blog blog = blogService.getBlog(blogId);
 
-        System.out.println(blog);
+
         List<String> list = new ArrayList<>();
 
         String content = blog.getContent();
@@ -85,8 +105,6 @@ public class IndexController {
         for (String line: lines){
             list.add("<p>"+line+"。</p>");
         }
-
-        System.out.println(String.join("", list));
 
         blog.setContent(String.join("", list));
 
