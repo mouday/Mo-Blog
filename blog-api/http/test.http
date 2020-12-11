@@ -1,0 +1,31 @@
+
+GET {{baseUrl}}/error
+
+###
+GET {{baseUrl}}/exception
+
+###
+
+GET {{baseUrl}}/users?page=1
+
+###
+GET {{baseUrl}}/user?id=1
+
+###
+GET {{baseUrl}}/users
+
+###
+GET {{baseUrl}}/blogs
+
+###
+
+GET {{baseUrl}}/blog?id=1
+###
+
+POST {{baseUrl}}/insertUser
+Content-Type: application/json
+
+{"name":  "李大白", "dynasty":  "明朝"}
+
+
+###
