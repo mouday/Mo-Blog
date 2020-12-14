@@ -1,53 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c70905bc-856e-45ba-b433-57aa3f085a5d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/conf/CrossConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/conf/JwtConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/conf/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/controller/DynastyController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/service/DynastyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/service/UserPasswordService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../blog-api/src/test/java/com/mouday/blogapi/JwtDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.pyenv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-admin/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-admin/.env.development" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-admin/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-admin/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-admin/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-admin/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-admin/src/api/dataApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-admin/src/api/dataApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-admin/src/api/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-admin/src/api/http.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-admin/src/layout/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-admin/src/layout/components/Navbar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-admin/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-admin/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-admin/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-admin/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-admin/src/store/getters.js" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-admin/src/store/getters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-admin/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-admin/src/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-admin/src/store/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-admin/src/store/modules/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-admin/src/views/table/index.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-admin/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-admin/vue.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/http/test.http" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/http/test.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/BlogApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/BlogApiApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/conf/MyMetaObjectHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/conf/MyMetaObjectHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/conf/ResponseExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/conf/ResponseExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/conf/WebAppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/conf/WebAppConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/controller/BlogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/mapper/BlogMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/mapper/BlogMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/pojo/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/pojo/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/pojo/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/pojo/Blog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/pojo/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/result/ResultCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/result/ResultCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/service/BlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/service/BlogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/java/com/mouday/blogapi/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/resources/generator/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/resources/generator/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/resources/mapper/BlogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/resources/mapper/BlogMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/test/java/com/mouday/blogapi/mapper/UserMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/test/java/com/mouday/blogapi/mapper/UserMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blog-api/src/test/java/com/mouday/blogapi/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-api/src/test/java/com/mouday/blogapi/service/UserServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data/database.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data/init_data.py" beforeDir="false" />
-    </list>
+    <list default="true" id="c70905bc-856e-45ba-b433-57aa3f085a5d" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,6 +78,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -183,23 +138,22 @@
       <updated>1607746775817</updated>
       <workItem from="1607746778297" duration="103000" />
       <workItem from="1607746892919" duration="22000" />
-      <workItem from="1607749904869" duration="4477000" />
+      <workItem from="1607749904869" duration="4599000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4602000" />
+    <option name="totallyTimeSpent" value="4724000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="804" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16237482" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16237482" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24578652" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24578652" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
