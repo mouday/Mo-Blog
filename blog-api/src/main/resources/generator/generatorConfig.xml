@@ -51,13 +51,18 @@
         </javaClientGenerator>
 
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
-        <table tableName="mo_blog"
-               domainObjectName="Blog"
+        <table tableName="mo_user_password"
+               domainObjectName="UserPassword"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
+               enableInsert="false"
+               enableUpdateByPrimaryKey="false"
+               enableDeleteByPrimaryKey="false"
+               selectByPrimaryKeyQueryId="false"
                selectByExampleQueryId="false">
+
         </table>
 
     </context>

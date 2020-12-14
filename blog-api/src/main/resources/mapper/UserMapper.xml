@@ -5,14 +5,14 @@
   <resultMap id="BaseResultMap" type="com.mouday.blogapi.pojo.User">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="dynasty" jdbcType="VARCHAR" property="dynasty" />
+    <result column="dynasty_id" jdbcType="INTEGER" property="dynastyId" />
     <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
 
   <sql id="Base_Column_List">
-    id, name, dynasty, last_login_time, create_time, update_time
+    id, name, dynasty_id, last_login_time, create_time, update_time
   </sql>
 
   <select id="selectUserWithBlogCount" resultType="com.mouday.blogapi.pojo.User">
@@ -22,7 +22,28 @@
         from mo_blog
         group by user_id
     ) blog_count on id = user_id
+
+    <!-- 搜索查询 -->
+    <if test="keywords != null and keywords != ''">
+        where name like CONCAT('%', #{keywords}, '%')
+    </if>
+
     order by count desc
   </select>
 
+  <update id="updateUserById" parameterType="com.mouday.blogapi.pojo.User">
+    update mo_user
+    set
+        dynasty_id = #{dynastyId},
+        name = #{name}
+    where
+        id = #{id}
+  </update>
+
+    <select id="selectUserByUsername" resultType="com.mouday.blogapi.pojo.User">
+        select *
+        from mo_user
+        where name = #{name}
+        limit 1
+    </select>
 </mapper>

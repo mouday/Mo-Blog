@@ -29,3 +29,12 @@ mybatis-plus:
         id-type: auto
         table-prefix: "mo_"
   type-aliases-package: com.mouday.blogapi.pojo
+
+config:
+  jwt:
+    # 加密密钥
+    secret: 123456
+    # token有效时长 单位:秒
+    expire: 3600
+    # header 名称
+    token: "X-Token"

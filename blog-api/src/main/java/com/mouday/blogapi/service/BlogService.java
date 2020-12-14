@@ -32,6 +32,16 @@ public class BlogService {
         return count;
     }
 
+
+    /**
+     * 删除数据
+     * @param id
+     * @return
+     */
+    public int deleteById(Integer id){
+        return blogMapper.deleteById(id);
+    }
+
     /**
      * 获取文章详情
      *
@@ -55,32 +65,29 @@ public class BlogService {
      * @param size
      * @return
      */
-    public IPage<Blog> getBlog(Integer page, Integer size) {
-        Page<Blog> pager = new Page<>(page, size, false);
-        IPage<Blog> iPage = blogMapper.selectWithUser(pager);
-        Integer count = blogMapper.selectCount(null);
-        iPage.setTotal(count);
+    public IPage<Blog> getBlogList(Integer page, Integer size, Integer dynastyId) {
+        Page<Blog> pager = new Page<>(page, size);
+        IPage<Blog> iPage = blogMapper.selectWithUser(pager, dynastyId);
+
+        // Integer count = blogMapper.selectCount(null);
+        // iPage.setTotal(count);
         return iPage;
     }
 
-    /**
-     * 插入数据
-     * @param blog
-     * @return
-     */
-    public Blog insert(Blog blog){
-        blogMapper.insert(blog);
+    public Blog saveBlog(Blog blog) {
+
+        if (blog.getId() == null) {
+            blogMapper.insert(blog);
+        } else {
+            blogMapper.updateById(blog);
+        }
+
         return blog;
     }
 
-    /**
-     * 更新数据
-     * @param blog
-     * @return
-     */
-    public Blog update(Blog blog){
-        blogMapper.updateById(blog);
-        return blog;
+    public int updateShowStatusById(Integer id, Boolean isShow) {
+        return blogMapper.updateStatusById(id, isShow);
     }
+
 
 }

@@ -15,32 +15,40 @@ public class UserService {
     @Autowired
     BlogService blogService;
 
+
     /**
      * 更新数据
+     *
      * @param user
      * @return
      */
-    public User update(User user){
-        userMapper.updateById(user);
+    public User saveUser(User user) {
+        if (user.getId() == null) {
+            userMapper.insert(user);
+        } else {
+            userMapper.updateUserById(user);
+        }
         return user;
     }
 
     /**
-     * 插入数据
-     * @param user
-     * @return
-     */
-    public User insert(User user){
-        userMapper.insert(user);
-        return user;
-    }
-
-    /**
-     * 获取用户
+     * 删除数据
+     *
      * @param id
      * @return
      */
-    public User getUserById(Integer id){
+    public int deleteById(Integer id) {
+        return userMapper.deleteById(id);
+    }
+
+
+    /**
+     * 获取用户
+     *
+     * @param id
+     * @return
+     */
+    public User getUserById(Integer id) {
         User user = userMapper.selectById(id);
 
         Integer count = blogService.getCountByUserId(id);
@@ -51,17 +59,20 @@ public class UserService {
 
     /**
      * 获取用户列表
+     *
      * @param page
      * @param size
      * @return
      */
-    public IPage<User> getUserList(Integer page, Integer size){
+    public IPage<User> getUserList(Integer page, Integer size, String keywords) {
         Page<User> pager = new Page<>(page, size, false);
-        IPage<User> iPage = userMapper.selectUserWithBlogCount(pager);
+        IPage<User> iPage = userMapper.selectUserWithBlogCount(pager, keywords);
 
         Integer count = userMapper.selectCount(null);
         iPage.setTotal(count);
         return iPage;
     }
+
+
 
 }

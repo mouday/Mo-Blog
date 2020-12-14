@@ -2,16 +2,28 @@
 GET {{baseUrl}}/error
 
 ###
-GET {{baseUrl}}/exception
+GET {{baseUrl}}/exceptionxx
 
 ###
 
 GET {{baseUrl}}/users?page=1
 
-###
-GET {{baseUrl}}/user?id=1
 
 ###
+
+GET {{baseUrl}}/users?page=1&keywords=李白
+
+
+###
+GET {{baseUrl}}/user?id=2
+X-Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwiZXhwIjoxNjA3OTE2NzQxLCJ1c2VybmFtZSI6IuadqOaVrOS5iyJ9.3Idb076ySqiN9-_xvCvVcDsZmaUnqgjSruiKdbkY0KI
+
+###
+
+DELETE {{baseUrl}}/user?id=92
+
+###
+
 GET {{baseUrl}}/users
 
 ###
@@ -22,10 +34,37 @@ GET {{baseUrl}}/blogs
 GET {{baseUrl}}/blog?id=1
 ###
 
-POST {{baseUrl}}/insertUser
+POST {{baseUrl}}/user
 Content-Type: application/json
 
-{"name":  "李大白", "dynasty":  "明朝"}
+{"id": 67, "name":  "李大白", "dynastyId":  1}
 
 
 ###
+GET {{baseUrl}}/dynasty
+
+###
+
+GET {{baseUrl}}/dynastyWithUserCount
+
+###
+POST {{baseUrl}}/blogStatus
+Content-Type: application/json
+
+{"id": 167, "isShow":  true}
+
+###
+POST {{baseUrl}}/userPassword
+Content-Type: application/json
+
+{"id": 2, "password":  "123456"}
+
+###
+
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{"username": "杨敬之", "password":  "123456"}
+
+###
+

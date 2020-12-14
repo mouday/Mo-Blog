@@ -7,13 +7,15 @@
 
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="is_show" jdbcType="BOOLEAN" property="isShow" />
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
 
     <association property="user" javaType="com.mouday.blogapi.pojo.User">
       <id column="user_id" jdbcType="INTEGER" property="id" />
       <result column="user_name" jdbcType="VARCHAR" property="name" />
-      <result column="user_dynasty" jdbcType="VARCHAR" property="dynasty" />
+      <result column="user_dynasty_id" jdbcType="VARCHAR" property="dynastyId" />
       <result column="user_create_time" jdbcType="TIMESTAMP" property="createTime" />
       <result column="user_update_time" jdbcType="TIMESTAMP" property="updateTime" />
 
@@ -34,11 +36,21 @@
   </sql>
 
   <select id="selectWithUser" resultMap="ResultMapWithBLOBs">
-    select blog.id, blog.user_id, blog.title, blog.create_time, blog.update_time,
-    user.name as user_name, user.dynasty as user_dynasty, user.create_time as user_create_time, user.update_time as user_update_time
+    select blog.id, blog.user_id, blog.title, blog.is_show, blog.publish_time, blog.create_time, blog.update_time,
+    user.name as user_name, user.dynasty_id as user_dynasty_id, user.create_time as user_create_time, user.update_time as user_update_time
     from mo_blog blog
     left join mo_user user
     on user.id = blog.user_id
+
+    <if test="dynastyId != null">
+      where dynasty_id = #{dynastyId}
+    </if>
   </select>
+
+  <update id="updateStatusById">
+    update mo_blog
+    set is_show = #{isShow}
+    where id = #{id}
+  </update>
 
 </mapper>

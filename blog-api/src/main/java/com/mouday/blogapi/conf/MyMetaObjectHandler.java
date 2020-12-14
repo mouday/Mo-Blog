@@ -27,8 +27,10 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     public void updateFill(MetaObject metaObject) {
         Object updateTime = getFieldValByName("updateTime", metaObject);
         // 如果updateTime 为空才进行自动填充
-        if (updateTime == null) {
+        // if (updateTime == null) {
+        if (metaObject.hasSetter("updateTime")) {
             setFieldValByName("updateTime", new Date(), metaObject);
         }
+        // }
     }
 }

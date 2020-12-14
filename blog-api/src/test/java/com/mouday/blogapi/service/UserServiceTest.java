@@ -11,32 +11,29 @@ public class UserServiceTest {
     UserService userService;
 
     @Test
-    public void testGetUserList(){
+    public void testGetUserList() {
         // IPage<User> iPage = userService.getUserList(1, 1);
     }
 
     @Test
-    public void testUpdateUser(){
+    public void testUpdateUser() {
 
         User user = new User();
         user.setName("李小白");
-        user.setDynasty("明朝");
 
-        userService.update(user);
+        // userService.update(user);
     }
 
     @Test
-    public void testInsertUser(){
+    public void testInsertUser() {
 
         User user = new User();
         user.setName("李小白");
-        user.setDynasty("明朝");
 
-        user = userService.insert(user);
+        // user = userService.insert(user);
 
         System.out.println(user);
     }
-
 
 
 }

@@ -1,15 +1,12 @@
 package com.mouday.blogapi.mapper;
 
-public interface BlogMapper {
-    int deleteByPrimaryKey(Integer id);
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.mouday.blogapi.pojo.Blog;
 
-    int insert(Blog record);
+public interface BlogMapper extends BaseMapper<Blog> {
+    IPage<Blog> selectWithUser(Page<?> page, Integer dynastyId);
 
-    int insertSelective(Blog record);
-
-    Blog selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Blog record);
-
-    int updateByPrimaryKey(Blog record);
+    int updateStatusById(Integer id, Boolean isShow);
 }

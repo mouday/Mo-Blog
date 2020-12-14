@@ -1,4 +1,4 @@
-package com.mouday.blogapi.conf;
+package com.mouday.blogapi.interceptor;
 
 import com.mouday.blogapi.result.ResponseResult;
 import com.mouday.blogapi.result.ResultController;

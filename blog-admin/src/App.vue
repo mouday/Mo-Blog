@@ -6,6 +6,12 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+
+  created(){
+    // 初始化一些数据
+    this.$store.dispatch("dynasty/initData")
+  }
+  
 }
 </script>

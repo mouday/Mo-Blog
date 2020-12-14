@@ -2,75 +2,52 @@ package com.mouday.blogapi.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.mouday.blogapi.mapper.DynastyMapper;
 import com.mouday.blogapi.mapper.UserMapper;
+import com.mouday.blogapi.pojo.Dynasty;
 import com.mouday.blogapi.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class UserService {
+public class DynastyService {
     @Autowired
-    UserMapper userMapper;
-
-    @Autowired
-    BlogService blogService;
-
-    /**
-     * 更新数据
-     * @param user
-     * @return
-     */
-    public User update(User user){
-        userMapper.updateById(user);
-        return user;
-    }
-
-    /**
-     * 删除数据
-     * @param id
-     * @return
-     */
-    public int deleteById(Integer id){
-        return userMapper.deleteById(id);
-    }
-
-    /**
-     * 插入数据
-     * @param user
-     * @return
-     */
-    public User insert(User user){
-        userMapper.insert(user);
-        return user;
-    }
-
-    /**
-     * 获取用户
-     * @param id
-     * @return
-     */
-    public User getUserById(Integer id){
-        User user = userMapper.selectById(id);
-
-        Integer count = blogService.getCountByUserId(id);
-        user.setCount(count);
-
-        return user;
-    }
+    DynastyMapper dynastyMapper;
 
     /**
      * 获取用户列表
-     * @param page
-     * @param size
-     * @return
-     */
-    public IPage<User> getUserList(Integer page, Integer size){
-        Page<User> pager = new Page<>(page, size, false);
-        IPage<User> iPage = userMapper.selectUserWithBlogCount(pager);
 
-        Integer count = userMapper.selectCount(null);
-        iPage.setTotal(count);
-        return iPage;
+     */
+    public List<Dynasty> getAll(){
+
+        List<Dynasty> list = dynastyMapper.selectList(null);
+
+        return list;
+    }
+
+    public List<Dynasty> getAllDynastyWithUserCount(){
+        return dynastyMapper.getAllDynastyWithUserCount();
+    }
+
+    public int deleteById(Integer id){
+        return dynastyMapper.deleteById(id);
+    }
+
+    public Dynasty getDynastyById(Integer id) {
+        return dynastyMapper.selectById(id);
+    }
+
+    public Dynasty saveDynasty(Dynasty dynasty) {
+
+        if (dynasty.getId() == null) {
+            dynastyMapper.insert(dynasty);
+        } else {
+            dynastyMapper.updateDynastyById(dynasty);
+        }
+
+        return dynasty;
     }
 
 }

@@ -47,11 +47,11 @@ def get_data(url):
     return lst
 
 
-def get_user_id(con, user_name, dynasty):
-    """姓名user_name 和 朝代dynasty 唯一确定一位作者"""
-    user = con.select_one("select id from mo_user where name = :name and dynasty = :dynasty limit 1", {
+def get_user_id(con, user_name, dynasty_id):
+    """姓名user_name 和 朝代 dynasty_id 唯一确定一位作者"""
+    user = con.select_one("select id from mo_user where name = :name and dynasty_id = :dynasty_id limit 1", {
         "name": user_name,
-        "dynasty": dynasty
+        "dynasty_id": dynasty_id
     })
 
     if not user:
@@ -59,12 +59,30 @@ def get_user_id(con, user_name, dynasty):
 
         user_id = user_table.insert_one({
             "name": user_name,
-            "dynasty": dynasty,
+            "dynasty_id": dynasty_id,
         })
     else:
         user_id = user['id']
 
     return user_id
+
+
+def get_dynasty_id(con, dynasty_name):
+    """朝代dynasty 唯一"""
+    dynasty = con.select_one("select id from mo_dynasty where name = :dynasty_name limit 1", {
+        "dynasty_name": dynasty_name,
+    })
+
+    if not dynasty:
+        dynasty_table = con.table("mo_dynasty")
+
+        dynasty_id = dynasty_table.insert_one({
+            "name": dynasty_name
+        })
+    else:
+        dynasty_id = dynasty['id']
+
+    return dynasty_id
 
 
 def get_blog_id(con, user_id, title):
@@ -89,7 +107,9 @@ def main():
 
         for item in get_data(url):
             print(item)
-            user_id = get_user_id(con, item['author'], item['author_time'])
+            dynasty_id = get_dynasty_id(con, item['author_time'])
+
+            user_id = get_user_id(con, item['author'], dynasty_id)
 
             # 去重处理
             blog_id = get_blog_id(con, user_id, item['title'])

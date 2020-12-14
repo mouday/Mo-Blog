@@ -1,5 +1,6 @@
 package com.mouday.blogapi.conf;
 
+import com.mouday.blogapi.interceptor.ResponseResultInterceptor;
 import com.mouday.blogapi.result.ResultData;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;

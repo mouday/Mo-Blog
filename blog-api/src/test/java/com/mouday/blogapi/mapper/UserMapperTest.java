@@ -18,10 +18,10 @@ public class UserMapperTest {
     @Test
     public void testGetUserList(){
         Page<Map<String, Object>> page = new Page<>(1, 2, false);
-        IPage<User> iPage = userMapper.selectByGroupUser(page);
+        // IPage<User> iPage = userMapper.selectUserWithBlogCount(page);
 
-        System.out.println(iPage.getTotal());
-        System.out.println(iPage.getRecords());
+        // System.out.println(iPage.getTotal());
+        // System.out.println(iPage.getRecords());
 
     }
 

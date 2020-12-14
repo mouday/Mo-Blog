@@ -37,17 +37,17 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    proxy: {
-      "/dev-api": {
-        target: "http://localhost:8081", //跨域网址
-        secure: true, // 如果是https接口，需要配置这个参数
-        changeOrigin: true, //自动修改http header里面的host
-        pathRewrite: {
-          "^/dev-api": "", //路径的替换规则
-        }
-      }
-    },
-    before: require('./mock/mock-server.js')
+    // proxy: {
+    //   "/dev-api": {
+    //     target: "http://localhost:8081", //跨域网址
+    //     secure: true, // 如果是https接口，需要配置这个参数
+    //     changeOrigin: true, //自动修改http header里面的host
+    //     pathRewrite: {
+    //       "^/dev-api": "", //路径的替换规则
+    //     }
+    //   }
+    // },
+    // before: require('./mock/mock-server.js')
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that

@@ -7,6 +7,9 @@ import com.mouday.blogapi.pojo.User;
 
 public interface UserMapper extends BaseMapper<User> {
 
-    IPage<User> selectUserWithBlogCount(Page<?> page);
-    
+    IPage<User> selectUserWithBlogCount(Page<?> page, String keywords);
+
+    Integer updateUserById(User user);
+
+    User selectUserByUsername(String username);
 }
