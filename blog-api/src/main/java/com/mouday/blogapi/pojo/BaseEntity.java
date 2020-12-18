@@ -16,7 +16,10 @@ import java.util.Date;
  * https://www.misiai.com/tutorials/88.html
  */
 
+@Getter
+@Setter
 public class BaseEntity {
+
     protected Integer id;
 
     //INSERT代表只在插入时填充
@@ -30,27 +33,4 @@ public class BaseEntity {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")//get
     protected Date updateTime;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 }

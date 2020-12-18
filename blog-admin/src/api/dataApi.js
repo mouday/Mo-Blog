@@ -26,6 +26,19 @@ const DATA_API = {
   
   // 登录
   login: "POST:/login",
+
+  // 角色
+  getRoleListWithPermission: "GET:/roleListWithPermission", 
+  // 权限
+
+  // 文件上传
+  postUploadFile: "POST:/uploadFile",
+
+  // 发送邮件
+  postSendMail: 'POST:/sendMail',
+  getEmailList: 'GET:/emailList'
+
+
 };
 
 export default DATA_API;

@@ -5,7 +5,7 @@ import Http from "@/api/http.js";
 
 const state = {
   data: {},
-  list: {}
+  list: []
 };
 
 const mutations = {

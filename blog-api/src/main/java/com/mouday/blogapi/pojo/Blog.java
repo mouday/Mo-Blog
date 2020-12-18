@@ -3,10 +3,13 @@ package com.mouday.blogapi.pojo;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
 public class Blog extends BaseEntity {
     @JsonIgnore
     private Integer userId;

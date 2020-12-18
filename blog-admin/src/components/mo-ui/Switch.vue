@@ -17,14 +17,6 @@ export default {
     },
   },
 
-  components: {},
-
-  data() {
-    return {};
-  },
-
-  computed: {},
-
   methods: {
     async handleChange(event) {
       const res = await this.$Http[this.action]({
@@ -39,8 +31,6 @@ export default {
       }
     },
   },
-
-  created() {},
 };
 </script>
 

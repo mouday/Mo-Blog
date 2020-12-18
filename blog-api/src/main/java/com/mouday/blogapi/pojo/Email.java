@@ -1,11 +1,14 @@
 package com.mouday.blogapi.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
-public class EmailEntity extends BaseEntity{
+public class Email extends BaseEntity{
 
     private String toUser;
 
@@ -13,6 +16,7 @@ public class EmailEntity extends BaseEntity{
 
     private String content;
 
+    @JsonProperty("isSend")
     private boolean isSend;
 
 }

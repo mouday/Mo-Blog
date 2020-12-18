@@ -3,7 +3,6 @@ package com.mouday.blogapi.conf;
 import com.mouday.blogapi.exception.BaseException;
 import com.mouday.blogapi.result.ResultCode;
 import com.mouday.blogapi.result.ResultData;
-import io.jsonwebtoken.SignatureException;
 import org.springframework.web.bind.annotation.*;
 
 /**

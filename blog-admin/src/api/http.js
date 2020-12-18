@@ -1,6 +1,7 @@
 import axios from "axios";
 import dataApi from "./dataApi.js";
 import { Message } from 'element-ui';
+import { getToken } from '@/utils/auth'
 
 const instance = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
@@ -10,6 +11,7 @@ const instance = axios.create({
 // 请求拦截器
 instance.interceptors.request.use(
   config => {
+    config.headers['X-Token'] = getToken()
     return config;
   },
   err => {

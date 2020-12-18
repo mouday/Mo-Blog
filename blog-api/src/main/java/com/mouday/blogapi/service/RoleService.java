@@ -1,78 +1,40 @@
 package com.mouday.blogapi.service;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.mouday.blogapi.mapper.UserMapper;
-import com.mouday.blogapi.pojo.User;
+import com.mouday.blogapi.mapper.RoleMapper;
+import com.mouday.blogapi.pojo.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class UserService {
+public class RoleService {
     @Autowired
-    UserMapper userMapper;
+    RoleMapper roleMapper;
 
-    @Autowired
-    BlogService blogService;
-
-
-    /**
-     * 更新数据
-     *
-     * @param user
-     * @return
-     */
-    public User saveUser(User user) {
-        if (user.getId() == null) {
-            userMapper.insert(user);
+    public Role saveRole(Role role) {
+        if (role.getId() == null) {
+            roleMapper.insert(role);
         } else {
-            userMapper.updateUserById(user);
+            roleMapper.updateById(role);
         }
-        return user;
+        return role;
     }
 
-    /**
-     * 删除数据
-     *
-     * @param id
-     * @return
-     */
-    public int deleteById(Integer id) {
-        return userMapper.deleteById(id);
+    public int deleteRoleById(Integer id) {
+        return roleMapper.deleteById(id);
     }
 
-
-    /**
-     * 获取用户
-     *
-     * @param id
-     * @return
-     */
-    public User getUserById(Integer id) {
-        User user = userMapper.selectById(id);
-
-        Integer count = blogService.getCountByUserId(id);
-        user.setCount(count);
-
-        return user;
+    public Role getRoleById(Integer id) {
+        return roleMapper.selectById(id);
     }
 
-    /**
-     * 获取用户列表
-     *
-     * @param page
-     * @param size
-     * @return
-     */
-    public IPage<User> getUserList(Integer page, Integer size, String keywords) {
-        Page<User> pager = new Page<>(page, size, false);
-        IPage<User> iPage = userMapper.selectUserWithBlogCount(pager, keywords);
-
-        Integer count = userMapper.selectCount(null);
-        iPage.setTotal(count);
-        return iPage;
+    public List<Role> getRoleList() {
+        return roleMapper.selectList(null);
     }
 
-
+    public List<Role> getRoleListWithPermission() {
+        return roleMapper.getRoleListWithPermission();
+    }
 
 }

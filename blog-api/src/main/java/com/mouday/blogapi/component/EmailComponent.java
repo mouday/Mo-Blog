@@ -1,19 +1,18 @@
 package com.mouday.blogapi.component;
 
-import com.mouday.blogapi.exception.BaseException;
-import com.mouday.blogapi.result.ResultCode;
+import com.mouday.blogapi.pojo.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.io.File;
+import java.util.Map;
 
 
 /**
@@ -21,7 +20,7 @@ import java.io.File;
  * https://pengshiyu.blog.csdn.net/article/details/109569290
  */
 @Component
-public class Email {
+public class EmailComponent {
 
     @Value("${spring.mail.username}")
     private String fromUser;
@@ -32,128 +31,56 @@ public class Email {
     @Autowired
     private TemplateEngine templateEngine;
 
-
-    private
-
     /**
      * 文本邮件
-     *
-     * @param toUser
-     * @param subject
-     * @param content
      */
-    public void sendSimpleMail(
-            String toUser, String subject,
-            String content) {
+    public void sendSimpleMail(Email email) {
 
         SimpleMailMessage message = new SimpleMailMessage();
 
         message.setFrom(fromUser);
-        message.setTo(toUser);
-        message.setSubject(subject);
-        message.setText(content);
+        message.setTo(email.getToUser());
+        message.setSubject(email.getSubject());
+        message.setText(email.getContent());
 
         mailSender.send(message);
     }
 
     /**
      * html邮件
-     *
      */
-    public void sendHtmlMail(com.mouday.blogapi.pojo.Email email) {
+    public void sendHtmlMail(Email email) throws MessagingException {
 
         MimeMessage message = mailSender.createMimeMessage();
 
-        try {
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setFrom(fromUser);
-            helper.setTo(email.getToUser());
-            helper.setSubject(email.getSubject());
-            helper.setText(email.getContent(), true);
-        } catch (MessagingException e) {
-            throw new BaseException(ResultCode.EMAIL_SEND_ERROR);
-        }
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        helper.setFrom(fromUser);
+        helper.setTo(email.getToUser());
+        helper.setSubject(email.getSubject());
+        helper.setText(email.getContent(), true);
 
         mailSender.send(message);
 
     }
 
     /**
-     * 附件邮件
-     *
-     * @param toUser
-     * @param subject
-     * @param content
-     * @param filePath 绝对路径
-     * @throws MessagingException
+     * 发送模板邮件
      */
-    public void sendAttachmentsMail(
-            String toUser, String subject,
-            String content, String filePath)
+    public void sendTemplateMail(String toUser,
+                                 String subject,
+                                 String template,
+                                 Map<String, Object> data)
             throws MessagingException {
 
-        MimeMessage message = mailSender.createMimeMessage();
+        Context context = new Context();
+        context.setVariables(data);
+        String mailContent = templateEngine.process(template, context);
 
-        MimeMessageHelper helper = new MimeMessageHelper(message, true);
-        helper.setFrom(fromUser);
-        helper.setTo(toUser);
-        helper.setSubject(subject);
-        helper.setText(content, true);
+        Email email = new Email();
+        email.setToUser(toUser);
+        email.setSubject(subject);
+        email.setContent(mailContent);
 
-        FileSystemResource file = new FileSystemResource(new File(filePath));
-
-        // 可以多次添加附件
-        helper.addAttachment(file.getFilename(), file);
-
-        mailSender.send(message);
+        this.sendHtmlMail(email);
     }
-
-    /**
-     * 图片邮件
-     *
-     * @param toUser
-     * @param subject
-     * @param content
-     * @param resourcePath
-     * @param resourceId
-     * @throws MessagingException
-     */
-    public void sendInlineResourceMail(
-            String toUser, String subject,
-            String content, String resourcePath, String resourceId)
-            throws MessagingException {
-        MimeMessage message = mailSender.createMimeMessage();
-
-        MimeMessageHelper helper = new MimeMessageHelper(message, true);
-        helper.setFrom(fromUser);
-        helper.setTo(toUser);
-        helper.setSubject(subject);
-        helper.setText(content, true);
-
-        FileSystemResource resource = new FileSystemResource(new File(resourcePath));
-
-        // 可以多次添加图片
-        helper.addInline(resourceId, resource);
-
-        mailSender.send(message);
-    }
-
-    // /**
-    //  * 发送模板邮件
-    //  *
-    //  * @param toUser
-    //  * @param subject
-    //  * @param data
-    //  * @throws MessagingException
-    //  */
-    // public void sendTemplateMail(
-    //         String toUser, String subject,
-    //         String template, final Map<String, Object> data) throws MessagingException {
-    //
-    //     Context context = new Context();
-    //     context.setVariables(data);
-    //     String mailContent = templateEngine.process(template, context);
-    //
-    //     this.sendHtmlMail(toUser, subject, mailContent);
-    // }
 }

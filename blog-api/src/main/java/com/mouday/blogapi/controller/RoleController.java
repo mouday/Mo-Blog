@@ -1,49 +1,49 @@
 package com.mouday.blogapi.controller;
 
 import com.mouday.blogapi.exception.BaseException;
-import com.mouday.blogapi.pojo.Dynasty;
-import com.mouday.blogapi.pojo.User;
+import com.mouday.blogapi.pojo.Role;
 import com.mouday.blogapi.result.ResultCode;
 import com.mouday.blogapi.result.ResultController;
-import com.mouday.blogapi.service.DynastyService;
+import com.mouday.blogapi.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @ResultController
-public class DynastyController {
+public class RoleController {
     @Autowired
-    DynastyService dynastyService;
+    RoleService roleService;
 
-    @GetMapping("/dynastyList")
-    public List<Dynasty> getDynastyList() {
-        return dynastyService.getAll();
+    @GetMapping("/roleList")
+    public List<Role> getRoleList() {
+        return roleService.getRoleList();
+    }
+
+    @GetMapping("/roleListWithPermission")
+    public List<Role> getRoleListWithPermission() {
+        return roleService.getRoleListWithPermission();
     }
 
 
-    @GetMapping("/dynasty")
-    public Dynasty getDynasty(@RequestParam Integer id) {
-        return dynastyService.getDynastyById(id);
+    @GetMapping("/role")
+    public Role getRole(@RequestParam Integer id) {
+        return roleService.getRoleById(id);
     }
 
-    @GetMapping("/dynastyWithUserCount")
-    public List<Dynasty> getDynastyWithUserCount() {
-        return dynastyService.getAllDynastyWithUserCount();
-    }
 
-    @DeleteMapping("/dynasty")
-    public void deleteDynasty(@RequestParam Integer id) {
-        int ret = dynastyService.deleteById(id);
+    @DeleteMapping("/role")
+    public void deleteRole(@RequestParam Integer id) {
+        int ret = roleService.deleteRoleById(id);
 
         if(ret == 0){
             throw new BaseException(ResultCode.RECORD_NOT_EXIST);
         }
     }
 
-    @PostMapping("/dynasty")
-    public Dynasty saveDynasty(@RequestBody Dynasty dynasty) {
-        return dynastyService.saveDynasty(dynasty);
+    @PostMapping("/role")
+    public Role saveRole(@RequestBody Role role) {
+        return roleService.saveRole(role);
     }
 
 }

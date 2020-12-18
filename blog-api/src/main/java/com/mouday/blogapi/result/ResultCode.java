@@ -28,7 +28,10 @@ public enum ResultCode {
     // 接口异常 3000～3999
     RECORD_NOT_EXIST(3001, "记录不存在"),
 
-    // token错误
+    // 邮件错误
+    EMAIL_SEND_ERROR(4001, "邮件发送失败"),
+
+    // Token错误
     TOKEN_IS_INVALID(5001, "token无效"),
     TOKEN_IS_EXPIRED(5002, "token已过期"),
 

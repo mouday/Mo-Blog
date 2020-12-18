@@ -36,6 +36,17 @@
             <optional>true</optional>
         </dependency>
 
+        <!-- 邮件 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
+        <!-- 模板引擎 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
 
         <!-- JWT依赖 -->
         <dependency>
@@ -82,6 +93,8 @@
             <artifactId>p6spy</artifactId>
             <version>3.9.1</version>
         </dependency>
+
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

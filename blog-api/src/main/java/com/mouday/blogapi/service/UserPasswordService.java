@@ -1,22 +1,16 @@
 package com.mouday.blogapi.service;
 
-import com.mouday.blogapi.conf.JwtConfig;
+import com.mouday.blogapi.component.JsonWebToken;
 import com.mouday.blogapi.exception.BaseException;
 import com.mouday.blogapi.mapper.UserMapper;
 import com.mouday.blogapi.mapper.UserPasswordMapper;
-import com.mouday.blogapi.pojo.BaseEntity;
 import com.mouday.blogapi.pojo.User;
 import com.mouday.blogapi.pojo.UserPassword;
 import com.mouday.blogapi.result.ResultCode;
-import com.mouday.blogapi.utils.JwtUtil;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
-import java.util.Date;
 
 @Service
 public class UserPasswordService {
@@ -29,9 +23,14 @@ public class UserPasswordService {
     @Autowired
     BCryptPasswordEncoder encoder;
 
-    @Resource
-    JwtConfig jwtConfig;
+    @Autowired
+    JsonWebToken jsonWebToken;
 
+    /**
+     * 修改密码
+     * @param userPassword
+     * @return
+     */
     public int savePasswordById(UserPassword userPassword) {
         userPassword.setPassword(encoder.encode(userPassword.getPassword()));
 
@@ -72,23 +71,7 @@ public class UserPasswordService {
             throw new BaseException(ResultCode.USER_LOGIN_ERROR);
         }
 
-        return JwtUtil.createToken(user.getId(), user.getName());
+        return jsonWebToken.createToken(user.getId(), user.getName());
     }
-
-
-    public String getToken(User user) {
-        //过期时间
-        Date now = new Date();
-        Date expireDate = new Date(now.getTime() + jwtConfig.getExpire() * 1000);
-
-        return Jwts.builder()
-                .setHeaderParam("typ", "JWT")
-                .setSubject(user.getName())
-                .setExpiration(expireDate)
-                .signWith(SignatureAlgorithm.HS512, jwtConfig.getSecret())
-                .compact();
-
-    }
-
 
 }

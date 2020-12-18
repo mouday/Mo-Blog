@@ -57,7 +57,7 @@ Content-Type: application/json
 POST {{baseUrl}}/userPassword
 Content-Type: application/json
 
-{"id": 2, "password":  "123456"}
+{"id": 16, "password":  "123456"}
 
 ###
 
@@ -68,3 +68,32 @@ Content-Type: application/json
 
 ###
 
+GET  {{baseUrl}}/roleList
+
+###
+
+POST {{baseUrl}}/role
+Content-Type: application/json
+
+{"name":  "超级管理员"}
+
+###
+
+GET {{baseUrl}}/userInfo
+X-Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwiZXhwIjoxNjA4MDg5MTQyLCJ1c2VybmFtZSI6IuadqOaVrOS5iyJ9._Ghh1HuaM1bPqVaRO6cbxPU7OT82QNpy_3YrrGKU20Y
+
+###
+
+GET {{baseUrl}}/roleListWithPermission
+
+###
+POST {{baseUrl}}/sendMail
+Content-Type: application/json
+
+{"toUser":  "1940607002@qq.com", "subject":  "邮件标题", "content":  "邮件内容"}
+
+###
+
+GET {{baseUrl}}/emailList
+
+###

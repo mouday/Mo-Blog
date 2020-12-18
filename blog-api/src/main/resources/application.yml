@@ -1,3 +1,5 @@
+debug: true
+
 server:
   port: 8081
   servlet:
@@ -17,6 +19,22 @@ spring:
     serialization:
       write-dates-as-timestamps: false
 
+  servlet:
+    multipart:
+      # 上传文件总的最大值
+      max-request-size: 10MB
+      # 单个文件的最大值
+      max-file-size: 10MB
+
+  # 邮箱配置
+  mail:
+    host: smtp.163.com
+    username: moudayemail@163.com
+    # 户端授权码
+    password: mouday123
+    default-encoding: UTF-8
+
+
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
@@ -30,11 +48,8 @@ mybatis-plus:
         table-prefix: "mo_"
   type-aliases-package: com.mouday.blogapi.pojo
 
-config:
-  jwt:
-    # 加密密钥
-    secret: 123456
-    # token有效时长 单位:秒
-    expire: 3600
-    # header 名称
-    token: "X-Token"
+json-web-token:
+  # 有效时间 单位：秒
+  expire: 360
+  # 配置秘钥
+  secret: "123456"

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mouday.blogapi.mapper.RoleMapper">
+    <resultMap id="BaseResultMap" type="com.mouday.blogapi.pojo.Role">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id, name, create_time, update_time
+  </sql>
+
+    <resultMap id="ListResultMap" type="com.mouday.blogapi.pojo.Role">
+        <id column="role_id" jdbcType="INTEGER" property="id"/>
+        <result column="role_name" jdbcType="VARCHAR" property="name"/>
+
+        <collection property="permissions" ofType="com.mouday.blogapi.pojo.Permission">
+            <id column="permission_id" jdbcType="INTEGER" property="id"/>
+            <result column="permission_name" jdbcType="VARCHAR" property="name"/>
+        </collection>
+
+    </resultMap>
+
+    <select id="getRoleListWithPermission" resultMap="ListResultMap">
+    select r.id role_id, r.name role_name, p.id permission_id, p.name permission_name from mo_role r
+    left join mo_role_permission rp
+    on r.id = rp.role_id
+    left join mo_permission p
+    on rp.permission_id = p.id
+  </select>
+
+</mapper>

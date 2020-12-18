@@ -1,15 +1,20 @@
 package com.mouday.blogapi.pojo;
 
+
 import com.baomidou.mybatisplus.annotation.TableField;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
-public class Dynasty extends BaseEntity {
+public class Role extends BaseEntity {
+
     private String name;
 
     @TableField(exist = false)
-    private Integer userCount;
+    private List<Permission> permissions;
+
+
 }

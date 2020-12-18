@@ -105,7 +105,7 @@ export const constantRoutes = [
     path: "/dynasty",
     component: Layout,
     redirect: "/dynasty/list",
-    name: "user",
+    name: "dynasty",
     meta: { title: "朝代", icon: "nested" },
     children: [
       {
@@ -122,6 +122,61 @@ export const constantRoutes = [
       }
     ]
   },
+
+  {
+    path: "/email",
+    component: Layout,
+    redirect: "/email/list",
+    name: "email",
+    meta: { title: "邮件", icon: "mail" },
+    children: [
+     
+      {
+        path: "edit",
+        name: "email-edit",
+        component: () => import("@/views/demo/email/EmailEdit.vue"),
+        meta: { title: "发送邮件", icon: "mail-send" }
+      },
+      {
+        path: "list",
+        name: "email-list",
+        component: () => import("@/views/demo/email/EmailList.vue"),
+        meta: { title: "邮件列表", icon: "mail" }
+      },
+    
+    ]
+  },
+
+  {
+    path: "/demo",
+    component: Layout,
+    redirect: "/demo/ck-editor",
+    name: "demo",
+    meta: { title: "Demo", icon: "nested" },
+    children: [
+      {
+        path: "ck-editor",
+        name: "demo-ck-editor",
+        component: () => import("@/views/demo/CKEditorDemo.vue"),
+        meta: { title: "CKEditor", icon: "example" }
+      },
+
+      {
+        path: "mavon-editor",
+        name: "demo-mavon-editor",
+        component: () => import("@/views/demo/MavonEditorDemo.vue"),
+        meta: { title: "MavonEditor", icon: "example" }
+      },
+
+      {
+        path: "upload-file",
+        name: "demo-upload-file",
+        component: () => import("@/views/demo/UploadFile.vue"),
+        meta: { title: "文件上传", icon: "example" }
+      }
+    ]
+  },
+  
 
   // {
   //   path: '/nested',

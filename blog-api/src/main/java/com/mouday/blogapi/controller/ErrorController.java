@@ -7,6 +7,9 @@ import com.mouday.blogapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 
+/**
+ * 错误测试
+ */
 @ResultController
 public class ErrorController {
     @Autowired

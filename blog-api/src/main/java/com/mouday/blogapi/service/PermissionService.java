@@ -1,35 +1,35 @@
 package com.mouday.blogapi.service;
 
-import com.mouday.blogapi.mapper.RoleMapper;
-import com.mouday.blogapi.pojo.Role;
+import com.mouday.blogapi.mapper.PermissionMapper;
+import com.mouday.blogapi.pojo.Permission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class RoleService {
+public class PermissionService {
     @Autowired
-    RoleMapper roleMapper;
+    PermissionMapper permissionMapper;
 
-    public Role saveRole(Role role) {
-        if (role.getId() == null) {
-            roleMapper.insert(role);
+    public Permission savePermission(Permission permission) {
+        if (permission.getId() == null) {
+            permissionMapper.insert(permission);
         } else {
-            roleMapper.updateById(role);
+            permissionMapper.updateById(permission);
         }
-        return role;
+        return permission;
     }
 
-    public int deleteRoleById(Integer id) {
-        return roleMapper.deleteById(id);
+    public int deletePermissionById(Integer id) {
+        return permissionMapper.deleteById(id);
     }
 
-    public Role getRoleById(Integer id) {
-        return roleMapper.selectById(id);
+    public Permission getPermissionById(Integer id) {
+        return permissionMapper.selectById(id);
     }
 
-    public List<Role> getRoleList() {
-        return roleMapper.selectList(null);
+    public List<Permission> getPermissionList() {
+        return permissionMapper.selectList(null);
     }
 }
