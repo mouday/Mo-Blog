@@ -130,20 +130,48 @@ export const constantRoutes = [
     name: "email",
     meta: { title: "邮件", icon: "mail" },
     children: [
-     
       {
         path: "edit",
         name: "email-edit",
-        component: () => import("@/views/demo/email/EmailEdit.vue"),
+        component: () => import("@/views/demo/email-page/EmailEdit.vue"),
         meta: { title: "发送邮件", icon: "mail-send" }
       },
       {
         path: "list",
         name: "email-list",
-        component: () => import("@/views/demo/email/EmailList.vue"),
+        component: () => import("@/views/demo/email-page/EmailList.vue"),
         meta: { title: "邮件列表", icon: "mail" }
+      }
+    ]
+  },
+
+  {
+    path: "/editor",
+    component: Layout,
+    redirect: "/editor/ck-editor",
+    name: "editor",
+    meta: { title: "编辑器", icon: "nested" },
+    children: [
+      {
+        path: "ck-editor",
+        name: "editor-ck-editor",
+        component: () => import("@/views/demo/ck-editor-page/index.vue"),
+        meta: { title: "CKEditor", icon: "example" }
       },
-    
+
+      {
+        path: "mavon-editor",
+        name: "editor-mavon-editor",
+        component: () => import("@/views/demo/mavon-editor-page/index.vue"),
+        meta: { title: "MavonEditor", icon: "example" }
+      },
+
+      {
+        path: "vue2-editor",
+        name: "editor-vue2-editor",
+        component: () => import("@/views/demo/vue2-editor-page/index.vue"),
+        meta: { title: "Vue2Editor", icon: "example" }
+      },
     ]
   },
 
@@ -155,17 +183,10 @@ export const constantRoutes = [
     meta: { title: "Demo", icon: "nested" },
     children: [
       {
-        path: "ck-editor",
-        name: "demo-ck-editor",
-        component: () => import("@/views/demo/CKEditorDemo.vue"),
-        meta: { title: "CKEditor", icon: "example" }
-      },
-
-      {
-        path: "mavon-editor",
-        name: "demo-mavon-editor",
-        component: () => import("@/views/demo/MavonEditorDemo.vue"),
-        meta: { title: "MavonEditor", icon: "example" }
+        path: "vcolorpicker",
+        name: "demo-vcolorpicker",
+        component: () => import("@/views/demo/vcolorpicker-page/index.vue"),
+        meta: { title: "Vcolorpicker", icon: "example" }
       },
 
       {
@@ -176,7 +197,6 @@ export const constantRoutes = [
       }
     ]
   },
-  
 
   // {
   //   path: '/nested',

@@ -5,34 +5,13 @@
     <!-- 引入编辑框 -->
     <CkEditor v-model="content" />
 
-    <div style="margin-top:20px;">
-      <mo-button
-        type="primary"
-        @click="handleSubmit"
-      >保 存</mo-button>
-    </div>
-
-    <el-dialog
-      title="保存的内容"
-      :visible.sync="dialogVisible"
-      width="50%"
-      center
-    >
-      <div>{{content}}</div>
-
-      <span slot="footer">
-        <mo-button @click="dialogVisible = false">取 消</mo-button>
-        <mo-button
-          type="primary"
-          @click="dialogVisible = false"
-        >确 定</mo-button>
-      </span>
-    </el-dialog>
+    <ShowContent :content="content" />
   </div>
 </template>
 
 <script>
 import CkEditor from '@/components/ck-editor/index.vue';
+import ShowContent from '@/views/demo/common/ShowContent.vue';
 
 export default {
   name: '',
@@ -41,6 +20,7 @@ export default {
 
   components: {
     CkEditor,
+    ShowContent
   },
 
   data() {

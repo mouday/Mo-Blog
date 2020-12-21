@@ -17,7 +17,7 @@
  * 安装依赖， 注意vue2项目的版本号
  * cnpm i @ckeditor/ckeditor5-vue@1.0.1 \
  * @ckeditor/ckeditor5-build-decoupled-document@21.0.0 -S
- * 
+ *
  * 文档
  * https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/frameworks/vuejs-v2.html
  */
@@ -41,7 +41,7 @@ export default {
         // The configuration of the editor.
         language: 'zh-cn',
         // toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
-        extraPlugins: [MyUploadAdapterPlugin]
+        extraPlugins: [MyUploadAdapterPlugin],
       },
     };
   },
@@ -63,15 +63,12 @@ export default {
 <style lang="scss">
 /* 全局修改生效 */
 #ck-editer {
-  .ck-editor__editable_inline {
+  .ck-content {
+    line-height: 1.5;
     font-size: 14px;
-
-    p {
-      margin: 0;
-      line-height: 1.5;
-    }
     min-height: 300px;
     border: 1px solid #ccc !important;
+    background-color: white;
   }
 }
 </style>
